@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:grinder/grinder.dart';
-import 'package:grinder/src/utils.dart';
 
 void main(List<String> args) {
   grind(args);
