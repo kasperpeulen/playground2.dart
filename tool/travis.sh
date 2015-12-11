@@ -1,15 +1,16 @@
+
 #!/bin/bash
+
+# Copyright (c) 2014, the Dart project authors.  Please see the AUTHORS file
+# for details. All rights reserved. Use of this source code is governed by a
+# BSD-style license that can be found in the LICENSE file.
 
 # Fast fail the script on failures.
 set -e
 
-pub run test
+# Verify that the libraries are error free.
+dartanalyzer --fatal-warnings \
+  lib/playground2.dart
 
-# Install dart_coveralls; gather and send coverage data.
-if [ "$COVERALLS_TOKEN" ] && [ "$TRAVIS_DART_VERSION" = "stable" ]; then
-  pub global activate dart_coveralls
-  pub global run dart_coveralls report \
-    --exclude-test-files \
-    --debug \
-    test/test_all.dart
-fi
+# Run the tests.
+pub run test
