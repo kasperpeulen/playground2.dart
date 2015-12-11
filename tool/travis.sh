@@ -11,5 +11,3 @@ set -e
 dartanalyzer --fatal-warnings \
   lib/playground2.dart
 
-# Run the tests.
-pub run test
