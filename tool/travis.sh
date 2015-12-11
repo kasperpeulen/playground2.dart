@@ -12,5 +12,6 @@ pub global run tuneup check
 # Run the tests.
 pub run test
 
-# Verify that the generated grind script analyzes well.
 dart tool/grind.dart analyze
+
+dart tool/grind.dart testdartfmt

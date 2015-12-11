@@ -21,6 +21,13 @@ void format() {
   DartFmt.format(existingSourceDirs);
 }
 
+@Task('Apply dartfmt to all Dart source files')
+void testdartfmt() {
+  if (DartFmt.dryRun(existingSourceDirs)) {
+    throw "dartfmt failure";
+  }
+}
+
 
 @Task('Gather and send coverage data.')
 void coverage() {

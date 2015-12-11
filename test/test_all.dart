@@ -5,6 +5,5 @@ main() {
     expect(1 + 1, 2);
   });
   test("test2", () {
-    expect(1 + 1, 2);
-  });
+    expect(1 + 1, 2);});
 }
