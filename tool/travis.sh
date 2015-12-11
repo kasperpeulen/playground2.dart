@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # Copyright (c) 2014, the Dart project authors.  Please see the AUTHORS file
