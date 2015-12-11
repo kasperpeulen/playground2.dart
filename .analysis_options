@@ -3,7 +3,7 @@ analyzer:
     true
 linter:
   rules:
-    - always_declare_return_types
+    # - always_declare_return_types
     # - always_specify_types
     - avoid_as
     - camel_case_types
@@ -19,7 +19,7 @@ linter:
     - prefer_is_not_empty
     - slash_for_doc_comments
     - super_goes_last
-    - type_annotate_public_apis
+    # - type_annotate_public_apis
     - type_init_formals
     - unnecessary_brace_in_string_interp
     - unnecessary_getters_setters
