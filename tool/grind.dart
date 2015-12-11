@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:grinder/grinder.dart';
+import 'package:grinder/src/utils.dart';
 
 void main(List<String> args) {
   grind(args);
@@ -46,5 +47,32 @@ void coverage() {
     ]);
   } else {
     log('Skipping coverage task: no environment variable `COVERAGE_TOKEN` found.');
+  }
+}
+
+/// Utility class for invoking `dartfmt` from the SDK. This wrapper requires
+/// the `dartfmt` from SDK 1.9 and greater.
+class DartFmt {
+  /// Run the `dartfmt` command with the `--overwrite` option. Format a file, a
+  /// directory or a list of files or directories in place.
+  static void format(fileOrPath, {int lineLength}) {
+    _run('--overwrite', coerceToPathList(fileOrPath), lineLength: lineLength);
+  }
+
+  /// Run the `dartfmt` command with the `--dry-run` option. Return `true` if
+  /// any files would be changed by running the formatter.
+  static bool dryRun(fileOrPath, {int lineLength}) {
+    String results =
+    _run('--dry-run', coerceToPathList(fileOrPath), lineLength: lineLength);
+    print(results);
+    return results.trim().isNotEmpty;
+  }
+
+  static String _run(String option, List<String> targets,
+      {bool quiet: false, int lineLength}) {
+    var args = <String>[option];
+    if (lineLength != null) args.add('--line-length=$lineLength');
+    args.addAll(targets);
+    return run(sdkBin('dartfmt'), quiet: quiet, arguments: args);
   }
 }
